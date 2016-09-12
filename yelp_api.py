@@ -2,8 +2,8 @@ from yelp.client import Client
 from yelp.oauth1_authenticator import Oauth1Authenticator
 import os
 
-from dotenv import load_dotenv, find_dotenv
-load_dotenv(find_dotenv())
+# from dotenv import load_dotenv, find_dotenv
+# load_dotenv(find_dotenv())
 
 def get_businesses(location, term): 
 	auth = Oauth1Authenticator(
