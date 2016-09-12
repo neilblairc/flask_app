@@ -9,10 +9,10 @@
 					<h1>{{ businesses }}</h1>
 					<a href="{{ url_for('index') }}">Look up another address</a>
 				{% else %}
-					<h1>Hey! What do you need and where?</h1>
+					<h1>Hey! What do you need?</h1>
 					<form action="/" class="form-inline">
 						<div class="form-group">
-							<input type="text" name="address" placeholder="Enter what you need and where" class="form-control">
+							<input type="text" name="address" placeholder="Enter here" class="form-control">
 						</div>
 						<input type="submit" value="Submit" class="btn btn-primary">
 					<form/>	
