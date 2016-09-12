@@ -8,7 +8,7 @@ def index():
 	address = request.values.get('address')
 	businesses = None
 	if address:
-		businesses = yelp_api.get_businesses(location, term)
+		businesses = yelp_api.get_businesses(address)
 	return render_template('index.html', businesses=businesses)
 
 @app.route("/about")
