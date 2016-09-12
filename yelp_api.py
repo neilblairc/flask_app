@@ -5,7 +5,7 @@ import os
 # from dotenv import load_dotenv, find_dotenv
 # load_dotenv(find_dotenv())
 
-def get_businesses(location, term): 
+def get_businesses(term): 
 	auth = Oauth1Authenticator(
     	consumer_key=os.environ['CONSUMER_KEY'],
     	consumer_secret=os.environ['CONSUMER_SECRET'],
@@ -16,7 +16,6 @@ def get_businesses(location, term):
 	client = Client(auth)
 
 	params = {
-    	'location': location,
     	'term': term,
     	'lang': 'en',
     	'limit': 3
