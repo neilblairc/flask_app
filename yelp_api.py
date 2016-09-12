@@ -16,6 +16,7 @@ def get_businesses(location, term):
 	client = Client(auth)
 
 	params = {
+    	'location': location,
     	'term': term,
     	'lang': 'en',
     	'limit': 3
