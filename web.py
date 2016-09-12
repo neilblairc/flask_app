@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-	address = request.values.get('address')
+	address = request.values.get('location', 'term')
 	businesses = None
 	if address:
 		businesses = yelp_api.get_businesses(location, term)
