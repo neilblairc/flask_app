@@ -1,3 +1,5 @@
+# this is a pain in the ass to get working
+
 from yelp.client import Client
 from yelp.oauth1_authenticator import Oauth1Authenticator
 import os
