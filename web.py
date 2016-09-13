@@ -6,8 +6,6 @@ app = Flask(__name__)
 @app.route("/")
 def index():
 	address = request.values.get('address')
-	businesses = None
-	if address
 		businesses = get_businesses(city, term)
 		return render_template('index.html', businesses=businesses)
 
