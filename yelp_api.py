@@ -12,7 +12,7 @@ auth = Oauth1Authenticator(
 	token_secret=os.environ['TOKEN_SECRET']
 )
 
-def get_businesses(town, term): 
+def get_businesses(city, term): 
 	params = {
 	'term': term,
 	'lang': 'en',
@@ -21,7 +21,7 @@ def get_businesses(town, term):
 
 	client = Client(auth)
 
-	response = client.search(town, term **params)
+	response = client.search(city, term **params)
 
 	businesses = []
 
@@ -34,6 +34,6 @@ def get_businesses(town, term):
 
 	return businesses
 
-# businesses = get_businesses('town', 'term')
+# businesses = get_businesses('city', 'term')
 
 # print(businesses)

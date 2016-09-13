@@ -5,14 +5,10 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-	term = None
 	businesses = None
-	town = None
-	if(request.values.get('topic'))!=None:
-		term = request.values.get('topic')
-		city = request.values.get('town')
-		businesses = yelp_search(town, term)
-		return render_template('index.html', search_result=businesses)
+	address = request.values.get('address')
+		businesses = get_businesses(city, term)
+		return render_template('index.html', businesses=businesses)
 
 @app.route("/about")
 def about():
