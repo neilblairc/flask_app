@@ -16,13 +16,12 @@ def get_businesses(location, term):
 	client = Client(auth)
 
 	params = {
-    	'location': location,
     	'term': term,
     	'lang': 'en',
     	'limit': 3
 	}
 
-	response = client.search(location, term, **params)
+	response = client.search(location, **params)
 
 	businesses = []
 
@@ -37,6 +36,6 @@ def get_businesses(location, term):
 
 	return businesses
 
-businesses = get_businesses('location', 'term')
+# businesses = get_businesses('location', 'term')
 
 # print(businesses)

@@ -1,15 +1,18 @@
 from flask import Flask, render_template, request
-import yelp_api
+from yelp_api import yelp_api_search
 import os
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-	address = request.values.get('address')
+	term = None
 	businesses = None
-	if address:
-		businesses = yelp_api.get_businesses(address)
-	return render_template('index.html', businesses=businesses)
+	city = None
+	if(request.values.get('topic'))!=None:
+		term = request.values.get('topic')
+		city = request.values.get('city')
+		businesses = yelp_search(term, city)
+		return render_template('index.html', searchresult=businesses)
 
 @app.route("/about")
 def about():
