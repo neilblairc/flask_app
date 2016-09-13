@@ -5,23 +5,23 @@ import os
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
 
+auth = Oauth1Authenticator(
+	consumer_key=os.environ['CONSUMER_KEY'],
+	consumer_secret=os.environ['CONSUMER_SECRET'],
+	token=os.environ['TOKEN'],
+	token_secret=os.environ['TOKEN_SECRET']
+)
+
 def get_businesses(town, term): 
-	auth = Oauth1Authenticator(
-    	consumer_key=os.environ['CONSUMER_KEY'],
-    	consumer_secret=os.environ['CONSUMER_SECRET'],
-    	token=os.environ['TOKEN'],
-    	token_secret=os.environ['TOKEN_SECRET']
-	)
+	params = {
+	'term': term,
+	'lang': 'en',
+	'limit': 3
+	}
 
 	client = Client(auth)
 
-	params = {
-    	'term': term,
-    	'lang': 'en',
-    	'limit': 4
-	}
-
-	response = client.search(town, **params)
+	response = client.search(town, term **params)
 
 	businesses = []
 
@@ -34,6 +34,6 @@ def get_businesses(town, term):
 
 	return businesses
 
-businesses = get_businesses('town', 'term')
+# businesses = get_businesses('town', 'term')
 
 # print(businesses)
