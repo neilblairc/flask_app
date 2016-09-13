@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from yelp_api import yelp_api_search
+from yelp_api import yelp_search
 import os
 app = Flask(__name__)
 
@@ -7,11 +7,11 @@ app = Flask(__name__)
 def index():
 	term = None
 	businesses = None
-	city = None
+	location = None
 	if(request.values.get('topic'))!=None:
 		term = request.values.get('topic')
-		city = request.values.get('city')
-		businesses = yelp_search(term, city)
+		city = request.values.get('location')
+		businesses = yelp_search(term, location)
 		return render_template('index.html', searchresult=businesses)
 
 @app.route("/about")
