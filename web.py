@@ -6,8 +6,8 @@ app = Flask(__name__)
 @app.route("/")
 def index():
 	address = request.values.get('address')
-		businesses = get_businesses(city, term)
-		return render_template('index.html', businesses=businesses)
+	businesses = get_businesses(city, term)
+	return render_template('index.html', businesses=businesses)
 
 @app.route("/about")
 def about():
