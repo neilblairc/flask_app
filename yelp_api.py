@@ -2,6 +2,9 @@ from yelp.client import Client
 from yelp.oauth1_authenticator import Oauth1Authenticator
 import os
 
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
+
 def get_businesses(location, term): 
 	auth = Oauth1Authenticator(
     	consumer_key=os.environ['CONSUMER_KEY'],
@@ -15,7 +18,7 @@ def get_businesses(location, term):
 	params = {
     	'term': term,
     	'lang': 'en',
-    	'limit': 3
+    	'limit': 4
 	}
 
 	response = client.search(location, **params)
@@ -23,12 +26,10 @@ def get_businesses(location, term):
 	businesses = []
 
 	for business in response.businesses:
-		businesses.append({"Name": business.name,
-			"Word on the street": business.snippet_text,
-			"Random score": business.rating,
-			"Reviews by strangers": business.review_count,
-			"Whereabouts": business.location.address,
-			"Phone": business.phone
+		businesses.append({"name": business.name,
+			"rating": business.rating,
+			"whereabouts": business.location.address,
+			"phone": business.phone
 		})
 
 	return businesses
