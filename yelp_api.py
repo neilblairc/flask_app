@@ -16,7 +16,7 @@ auth = Oauth1Authenticator(
 
 def get_businesses(city, term): 
 	params = {
-	'city': city
+	'city': city,
 	'term': term,
 	'lang': 'en',
 	'limit': 3
