@@ -6,34 +6,34 @@
 	<body>
 		<div class="jumbotron">
 			<div class="container">
-				{% if restaurant %}
-					{{ restaurant }}
-					<h1> {{ restaurant.rating }}</h1>
-					<a href="{{ url_for('index') }}">  Look up another restaurant </a>
-				{% else %}
-					<h1>What type of food are you in the mood for?</h1>
-					<form action="/" class="form-inline">
-						<div class="form-group">
-							<input type="text" name="term" placeholder="Italian, Mexican, Chinese..." class="form-control">
-						</div>
-
-					<h1>Where do you want to eat?</h1>
-					<form action="/" class="form-inline">
-						<div class="form-group">
-							<input type="text" name="location" placeholder="Type in a location" class="form-control">
-						</div>
-						<input type="submit" name="Submit" class="btn btn-primary">
-					</form>
-				{% endif %}
-
-				{% for restaurant in restaurants %}
-					{{ business.address }}
-					{{ business.name }}
-					{{ business.rating}}
-				{% endfor %}
-				<br>
-				<a href="{{ url_for('about') }}">About this project </a>
-			</div>
-		</div>
-	<body>
+				{% if businesses %}
+                    {% for business in businesses %}
+                        <h1>Name:{{ business.name }}</h1>
+                        <h3>Rating:{{ business.rating }}</h3>
+                        <h3>Phone:{{ business.phone }}</h3>
+                        
+                    {% endfor %}
+                {% else %}
+                    <h1>Hello! What City are you in?</h1>
+                    <form action="/" class ="form-inline">
+                        <div class="form-group">
+                            <input type = "text" name="location" 
+                            placeholder="What city?"
+                            class="form-control">
+                        </div>
+                        <h1>What would you like to eat?</h1>
+                        <form action="/" class ="form-inline">
+                        <div class="form-group">
+                            <input type = "text" name="term" 
+                            placeholder="What food?"
+                            class="form-control"> 
+                        <input type = "Submit" value="Submit"" class="btn 
+                        btn-primary">
+                     
+                    </form>
+                {% endif %}
+                <a href="{{ url_for('about') }}">About This Project</a>
+            </div>
+        </div>
+    </body>
 </html>

@@ -1,18 +1,21 @@
 from flask import Flask, render_template, request
-from yelp_api
+import yelp_api
 import os
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
+
 app = Flask(__name__)
+
 
 @app.route("/")
 def index():
 	location = request.values.get('location')
 	term = request.values.get('term')
-	lang = 'en'
-	if location:
-		restaurant = yelp_api.get_restaurant(term, location, lang)
-	else:
-		restaurant = None
-	return render_template('index.html', restaurant=restaurant)
+	businesses = None
+	if location or term:
+		businesses = yelp_api.get_businesses(term,location)
+	return render_template('index.html', businesses=businesses)
+
 
 @app.route("/about")
 def about():
