@@ -8,10 +8,8 @@
 			<div class="container">
 				{% if businesses %}
                     {% for business in businesses %}
-                        <h1>Name:{{ business.name }}</h1>
-                        <h3>Rumor:{{ business.snippet_text }}</h3>
-                        <h3>Address:{{ business.location.address }}</h3>
-                        <h3>Rating:{{ business.rating }}</h3>
+                        <h2>Name:{{ business.name }}</h2>
+                        <h3>Rating:{{ business.location }}</h3>
                         <h3>Phone:{{ business.phone }}</h3>
                         
                     {% endfor %}
