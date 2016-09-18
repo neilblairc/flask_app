@@ -25,7 +25,6 @@ def get_businesses(term, location):
 
     for business in response.businesses:
         businesses.append({"name": business.name, 
-        "reviews": business.review_count, 
         "rating": business.rating, 
         "phone": business.phone
         })
@@ -33,7 +32,4 @@ def get_businesses(term, location):
     return businesses[:3]
 
 
-# function takes in location and term and returns 3 businesses
-
-# location = input("What city?")
-# term = input("What food?")
+# take in location and term and return 3 businesses against 3 response values

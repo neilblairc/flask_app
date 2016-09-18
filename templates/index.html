@@ -9,10 +9,10 @@
 				{% if businesses %}
                     {% for business in businesses %}
                         <h2>Name:{{ business.name }}</h2>
-                        <h3>Web:{{ business.url }}</h3>
                         <h3>Rating:{{ business.rating }}</h3>
                         <h3>Phone:{{ business.phone }}</h3>
-                        </div>
+                        <br>
+                        <br>
                     {% endfor %}
                 {% else %}
                     <h1>Let's find you some food!</h1>
