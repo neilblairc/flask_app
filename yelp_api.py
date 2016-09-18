@@ -14,29 +14,36 @@ auth = Oauth1Authenticator(
   token_secret=os.environ['TOKEN_SECRET']
 )
 
-def get_businesses(city, term): 
+client = Client(auth)
+
+# term = 'food'
+# lang = 'en'
+# location = 'Southlake, TX'
+
+
+def get_restaurant(term, location, lang):
+  consumer_key = os.environ['CONSUMER_KEY']
+  consumer_secret=os.environ['CONSUMER_SECRET']
   params = {
-  'city': city, 
-  'term': term,
-  'lang': 'en',
-  'limit': 3
-  }
+    'term': term,
+    'lang': lang,
+    'limit': 3,
+    'sort': 2
+  } 
 
-  client = Client(auth)
+  response = client.search(location, **params)
 
-  response = client.search(city, term **params)
-
-  businesses = []
+  restaurants = []
 
   for business in response.businesses:
-    businesses.append({"name": business.name,
-      "rating": business.rating,
-      "whereabouts": business.location.address,
-      "phone": business.phone
-    })
+    print(business.name, business.rating, business.review_count, business.phone)
+    restaurants.append({"name":business.name,
+       "rating":business.rating,
+        "review_count":business.review_count})
 
-  return businesses
 
-# businesses = get_businesses('city', 'term')
+  return restaurants
 
-# print(businesses)
+# restaurants = get_restaurant(term, location, lang)
+
+# print(restaurants)
