@@ -25,7 +25,7 @@ def get_businesses(term, location):
 
     for business in response.businesses:
         businesses.append({"name": business.name, 
-        "address": business.location, 
+        "reviews": business.review_count, 
         "phone": business.phone
         })
     
