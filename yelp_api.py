@@ -6,22 +6,6 @@ from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
 
 
-# params = {
-#     'term': 'food',
-#     'lang': 'en'
-# }
-
-# response = client.search('Copenhagen', **params)
-
-# for business in response.businesses:
-#     print(business.name)
-
-# Create function that takes in a term and location and print top businesses
-
-# term = input("What food are you looking for?")
-# location = input("Where do you want to eat?")
-
-
 def get_businesses(term, location):
     auth = Oauth1Authenticator(
     consumer_key=os.environ["CONSUMER_KEY"],
@@ -40,12 +24,16 @@ def get_businesses(term, location):
     businesses = []
 
     for business in response.businesses:
-        businesses.append({"name": business.name, 
+        businesses.append({"name": business.name,
+        "word on the street":business.snippet_text, 
         "rating": business.rating, 
         "phone": business.phone
         })
     
     return businesses[:3]
 
-    # term = input("What food are you looking for?")
-    # location = input("Where do you want to eat?")
+
+# function takes in location and term and returns 3 businesses
+
+# location = input("What city?")
+# term = input("What food?")
